@@ -30,16 +30,16 @@ function install_go() {
     echo "$INSTALL_GO_MESSAGE"
 
     if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-        wget https://golang.org/dl/go1.20.5.linux-amd64.tar.gz
-        sudo tar -C /usr/local -xzf go1.20.5.linux-amd64.tar.gz
+        wget https://golang.org/dl/go1.27.1.linux-amd64.tar.gz
+        sudo tar -C /usr/local -xzf go1.27.1.linux-amd64.tar.gz
         echo "export PATH=\$PATH:/usr/local/go/bin" >> ~/.bashrc
         source ~/.bashrc
     elif [[ "$OSTYPE" == "darwin"* ]]; then
-        wget https://golang.org/dl/go1.20.5.darwin-amd64.pkg
-        sudo installer -pkg go1.20.5.darwin-amd64.pkg -target /
+        wget https://golang.org/dl/go1.27.1.darwin-amd64.pkg
+        sudo installer -pkg go1.27.1.darwin-amd64.pkg -target /
     elif [[ "$OSTYPE" == "msys" || "$OSTYPE" == "win32" ]]; then
-        curl -LO https://golang.org/dl/go1.20.5.windows-amd64.msi
-        msiexec /i go1.20.5.windows-amd64.msi /quiet
+        curl -LO https://golang.org/dl/go1.27.1.windows-amd64.msi
+        msiexec /i go1.27.1.windows-amd64.msi /quiet
         echo "setx PATH \"%PATH%;C:\\Go\\bin\"" >> ~/.bashrc
         source ~/.bashrc
     else
@@ -83,12 +83,12 @@ fi
 
 
 echo "$BUILD_MESSAGE"
-go build -o toGo main.go
+go build -o togo main.go
 
 if [[ "$OSTYPE" == "linux-gnu"* || "$OSTYPE" == "darwin"* ]]; then
-    DESTINATION="/usr/local/bin/toGo"
+    DESTINATION="/usr/local/bin/togo"
 elif [[ "$OSTYPE" == "msys" || "$OSTYPE" == "win32" ]]; then
-    DESTINATION="$HOME/go/bin/toGo"
+    DESTINATION="$HOME/go/bin/togo"
 else
     echo "$UNKNOWN_OS_MESSAGE"
     exit 1
@@ -96,8 +96,9 @@ fi
 
 echo "$MOVE_MESSAGE"
 if [[ "$OSTYPE" == "linux-gnu"* || "$OSTYPE" == "darwin"* ]]; then
-    sudo mv toGo "$DESTINATION"
+    sudo mv togo "$DESTINATION"
     sudo chmod +x "$DESTINATION"
+    mkdir -p ~/.local/state/toGo
 else
     mv toGo "$DESTINATION"
 fi

@@ -26,11 +26,11 @@ func Dinit() {
 
 	switch runtime.GOOS {
 	case "linux":
-		notesDBPath = "/usr/local/bin/notes.db"
-		tasksDBPath = "/usr/local/bin/tasks.db"
+		notesDBPath = utils.ExpandHome("~/.local/state/toGo/notes.db")
+		tasksDBPath = utils.ExpandHome("~/.local/state/toGo/tasks.db")
 	case "darwin":
-		notesDBPath = "/usr/local/bin/notes.db"
-		tasksDBPath = "/usr/local/bin/tasks.db"
+		notesDBPath = utils.ExpandHome("~/.local/state/toGo/notes.db")
+		tasksDBPath = utils.ExpandHome("~/.local/state/toGo/tasks.db")
 	case "windows":
 		notesDBPath = filepath.Join(os.Getenv("USERPROFILE"), "go", "bin", "notes.db")
 		tasksDBPath = filepath.Join(os.Getenv("USERPROFILE"), "go", "bin", "tasks.db")

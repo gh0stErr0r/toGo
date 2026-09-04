@@ -18,7 +18,7 @@ Make sure you have the following installed:
 To install toGo, simply download the repository and run the `build.sh` script:
 
 ```bash
-git clone https://github.com/Akulalu07/toGo.git
+git clone https://github.com/gh0stErr0r/toGo.git
 cd toGo
 ./build.sh
 ```
@@ -29,21 +29,20 @@ Here are some examples of commands you can use with toGo:
 
 - **Add a task:** 
   ```bash
-  toGo add "Buy milk"
+  togo add "Buy milk"
   ```
 - **Delete a task:** 
   ```bash
-  toGo del 1
+  togo del 1
   ```
 - **View all tasks:** 
   ```bash
-  toGo list
+  togo list
   ```
 
 ## Error Handling
 If you encounter issues with the database, you can try running:
 ```bash
-sudo toGo [command]
+sudo togo [command]
 ```
 (Note: This command is intended to display the logo.)
-

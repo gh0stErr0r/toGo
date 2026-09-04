@@ -23,9 +23,9 @@ type ServerConfig struct {
 func Init() {
 	switch runtime.GOOS {
 	case "linux":
-		serverFile = "/usr/local/bin/server.json"
+		serverFile = utils.ExpandHome("~/.config/toGo/server.json")
 	case "darwin": // macOS
-		serverFile = "/usr/local/bin/server.json"
+		serverFile = utils.ExpandHome("~/.config/toGo/server.json")
 	case "windows":
 		serverFile = filepath.Join(os.Getenv("USERPROFILE"), "go", "bin", "server.json")
 	default:
